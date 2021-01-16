@@ -2,7 +2,7 @@
 backend:
   name: git-gateway
   branch: main
-  repo: danielmoessner/gatsby-netlifycms.tortuga-webdesign.de
+  repo: danielmoessner/avphd.de
 
 # See https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
 local_backend: true
@@ -11,10 +11,10 @@ local_backend: true
 locale: de
 
 # See https://www.netlifycms.org/docs/configuration-options/#display-url
-display_url: https://gatsby-netlifycms.tortuga-webdesign.de 
+display_url: avphd.de
 
 # See https://www.netlifycms.org/docs/configuration-options/#site-url
-site_url: https://gatsby-netlifycms.tortuga-webdesign.de 
+site_url: avphd.de
 
 # See https://www.netlifycms.org/docs/configuration-options/#media-folder
 media_folder: /content/media
@@ -31,7 +31,7 @@ collections:
     editor:
       preview: false
     files:
-      - file: content/pages/home.md
+      - file: content/pages/home.yml
         label: Startseite
         name: home
         fields:
@@ -48,43 +48,37 @@ collections:
                 widget: text
               - { label: Bild, name: image, widget: image }
 
-  - name: animal
-    label: Wildtiere
-    label_singular: Wildtier
+  - name: company
+    label: Unternehmen
+    label_singular: Unternehmen
     editor:
       preview: true
-    folder: content/animals
-    slug: '{{fields.slug}}'
+    folder: content/companies
+    slug: '{{fields.name}}'
     create: true
-    preview_path: wildtiere/{{fields.slug}}
+    extension: yml
+    # preview_path: wildtiere/{{fields.slug}}
     fields:
-      - { label: Sammlung, name: collection, widget: hidden, default: animal }
-      - { label: Titel, name: title, widget: string }
-      - {
-          label: Bild,
-          name: image,
-          widget: image
-        }
-      - { label: Auszug, name: excerpt, widget: text }
-      - { label: Inhalt, name: body, widget: markdown }
-      - label: 'Kategorie'
-        name: 'category'
-        widget: 'relation'
-        collection: 'category'
-        searchFields: ['title']
-        valueField: 'title'
+      - { label: Sammlung, name: collection, widget: hidden, default: company }
+      - { label: Name, name: name, widget: string }
+      - { label: Bild, name: image, widget: image }
+      - { label: Beschreibung, name: description, widget: text }
 
-  - name: category
-    label: Kategorien
-    label_singular: Kategorie
+  - name: project
+    label: Projekte
+    label_singular: Projekt
     editor:
-      preview: false
-    folder: content/categories
-    slug: '{{slug}}'
+      preview: true
+    folder: content/projects
+    # slug: '{{fields.slug}}'
     create: true
+    extension: yml
+    # preview_path: wildtiere/{{fields.slug}}
     fields:
-      - { label: Sammlung, name: collection, widget: hidden, default: category }
-      - { label: Titel, name: title, widget: string }
+      - { label: Sammlung, name: collection, widget: hidden, default: project }
+      - { label: Name, name: name, widget: string }
+      - { label: Bild, name: image, widget: image }
+      - { label: Beschreibung, name: description, widget: text }
 
   - name: 'setting'
     label: Einstellungen
@@ -98,7 +92,23 @@ collections:
         name: 'global-settings'
         preview: false
         fields:
-          - { label: Sammlung, name: collection, widget: hidden, default: setting }
+          - {
+              label: Sammlung,
+              name: collection,
+              widget: hidden,
+              default: setting
+            }
           - { label: Slug, name: slug, widget: hidden, default: global }
-          - { label: Titel in der Navigation, name: navigationTitle, widget: string, default: Wildtiere }
-          - { label: URL der Seite, name: siteUrl, widget: string, required: false }
+          - {
+              label: Titel in der Navigation,
+              name: navigationTitle,
+              widget: string,
+              default: Wildtiere
+            }
+          - {
+              label: URL der Seite,
+              name: siteUrl,
+              widget: string,
+              required: false
+            }
+          - { label: Favicon, name: favicon, widget: image }

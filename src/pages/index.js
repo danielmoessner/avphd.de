@@ -1,70 +1,47 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout'
-import Animal from '../components/animal'
 import Seo from '../components/seo'
+import Navigation from '../components/navigation'
+import Hero from '../components/hero'
+import Philosophy from '../components/philosophy'
 
 export default function Index(props) {
-  let homePage = props.data.markdownRemark.frontmatter.meta
-  let animals = props.data.allMarkdownRemark.edges.map(node => node.node)
+  let homePage = props.data.pagesYaml
+
   return (
-    <Layout>
-      <Seo title={homePage.title} description={homePage.description} image={homePage.image.childImageSharp.fluid.src} />
-      <div className="">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:gap-6">
-          {animals.map((animal) => (
-            <Animal
-              key={animal.id}
-              {...animal.frontmatter}
-              imageFluid={animal.frontmatter.image.childImageSharp.fluid}
-            />
-          ))}
-        </div>
-      </div>
-    </Layout>
+    <div>
+      <Seo
+        title={homePage.meta.title}
+        description={homePage.meta.description}
+        image={homePage.meta.image.childImageSharp.fluid.src}
+        favicon={homePage.meta.image.childImageSharp.resize.src}
+      />
+      <Navigation />
+      <Hero />
+      <Philosophy />
+    </div>
   )
 }
 
 export const query = graphql`
   {
-    allMarkdownRemark(
-      filter: { frontmatter: { collection: { eq: "animal" } } }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            slug
-            excerpt
-            category
-            title
-            image {
-              childImageSharp {
-                fluid {
-                  aspectRatio
-                  base64
-                  sizes
-                  src
-                  srcSet
-                }
-              }
+    pagesYaml(slug: { eq: "home" }) {
+      meta {
+        title
+        description
+        image {
+          childImageSharp {
+            fluid {
+              src
+              srcSet
+              sizes
+              base64
+              aspectRatio
+            }
+            resize(width: 256, height: 256, cropFocus: CENTER) {
+              src
             }
           }
-          id
-        }
-      }
-    }
-    markdownRemark(frontmatter: {collection: {eq: "page"}, slug: {eq: "home"}}) {
-      frontmatter {
-        meta {
-          image {
-            childImageSharp {
-              fluid {
-                src
-              }
-            }
-          }
-          description
-          title
         }
       }
     }

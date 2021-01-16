@@ -1,24 +1,19 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://gatsby-netlifycms.tortuga-webdesign.de',
+    siteUrl: 'https://gatsby-netlifycms.tortuga-webdesign.de'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'Wildtiere',
-        short_name: 'Wildtiere',
-        start_url: '/',
-        icon: 'static/images/favicon.svg',
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-sharp',
-      options: {
-        icon: 'static/images/favicon.svg',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-manifest',
+    //   options: {
+    //     name: 'Wildtiere',
+    //     short_name: 'Wildtiere',
+    //     start_url: '/',
+    //     icon: 'content/media/favicon.svg',
+    //   },
+    // },
+    'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
@@ -27,11 +22,11 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 800,
-            },
-          },
-        ],
-      },
+              maxWidth: 800
+            }
+          }
+        ]
+      }
     },
     'gatsby-transformer-yaml',
     'gatsby-plugin-react-helmet',
@@ -40,15 +35,15 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content`,
-        name: 'content',
-      },
+        name: 'content'
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/images`,
-        name: 'images',
-      },
+        name: 'images'
+      }
     },
     {
       resolve: 'gatsby-plugin-netlify-cms',
@@ -56,9 +51,9 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
         enableIdentityWidget: true,
         htmlTitle: 'CMS',
-        htmlFavicon: `${__dirname}/static/images/favicon.svg`,
-      },
+        htmlFavicon: `${__dirname}/static/images/favicon.svg`
+      }
     },
     'gatsby-plugin-sitemap'
-  ],
+  ]
 }
