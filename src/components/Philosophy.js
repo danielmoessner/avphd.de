@@ -1,7 +1,7 @@
 import React from 'react'
-import Container from './container'
+import Container from './Container'
 
-export default function Philosophy({}) {
+export default function Philosophy() {
   return (
     <section className="bg-original-2 relative z-40">
       <div className="">

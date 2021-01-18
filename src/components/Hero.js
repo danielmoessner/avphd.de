@@ -1,10 +1,10 @@
 import React from 'react'
-import Container from './container'
-import Button from './button'
+import Container from './Container'
+import Button from './Button'
 
 export default function Hero() {
   return (
-    <section className="w-full py-20 md:py-32 bg-original-1">
+    <header className="w-full py-20 md:py-32 bg-original-1">
       <Container>
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-12 md:col-span-7">
@@ -72,6 +72,6 @@ export default function Hero() {
           </div>
         </div>
       </Container>
-    </section>
+    </header>
   )
 }
