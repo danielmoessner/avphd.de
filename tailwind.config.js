@@ -16,18 +16,23 @@ module.exports = {
           6: '#624f35',
           8: '#423a2e',
           9: '#2e2519'
+        },
+        alex: {
+          1: '#e6e8f5',
+          2: '#dddfeb',
+          5: '#4d578f',
+          6: '#353c62',
+          8: '#2e3142',
+          9: '#191c2e'
         }
-      },
-      
-    },
+      }
+    }
   },
   variants: {
     extend: {
       backgroundColor: ['active'],
-      fontSize: ['hover', 'focus'],
-    },
+      fontSize: ['hover', 'focus']
+    }
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')]
 }
