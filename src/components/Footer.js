@@ -48,6 +48,10 @@ export default function Footer() {
                   12345 Stadtteil
                 </FooterLink>
               </div>
+              <div className="text-right text-sm">
+                <FooterLink reverse>Impressum</FooterLink>
+                <FooterLink reverse>Datenschutz</FooterLink>
+              </div>
             </div>
           </div>
         </Container>

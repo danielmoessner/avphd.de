@@ -1,9 +1,12 @@
 import React from 'react'
 
-function FooterLink({ children, href }) {
+function FooterLink({ children, href, reverse }) {
   return (
     <a
-      className="text-gray-800 block pl-1 py-2 rounded-md text-base hover:text-alex-6 text-opacity-80 hover:translate-x-1 transform transition duration-150 ease-in-out mb-1"
+      className={
+        'text-gray-800 block pl-1 py-2 rounded-md hover:text-alex-6 text-opacity-80 transform transition duration-150 ease-in-out mb-1 ' +
+        (reverse ? 'hover:-translate-x-1' : 'hover:translate-x-1')
+      }
       href={href}
     >
       {children}
@@ -12,7 +15,8 @@ function FooterLink({ children, href }) {
 }
 
 FooterLink.defaultProps = {
-  href: '#'
+  href: '#',
+  reverse: false
 }
 
 export default FooterLink
