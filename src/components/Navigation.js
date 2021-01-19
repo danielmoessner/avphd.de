@@ -56,7 +56,7 @@ export default function Navigation() {
             </div>
             <div className="flex-1 flex items-center justify-center lg:items-stretch lg:justify-between">
               <div className="flex-shrink-0 flex items-center">
-                <h1 className="text-alex-8 text-opacity-80 font-semibold font-serif px-2 py-0.5 border-0 lg:border border-alex-8 rounded">
+                <h1 className="text-alex-2 text-opacity-80 font-semibold font-serif px-2 py-0.5 border-0 lg:border border-alex-2 rounded">
                   Alexander v.P.H. Dobbrunz
                 </h1>
               </div>

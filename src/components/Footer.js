@@ -2,7 +2,7 @@ import React from 'react'
 import Container from './Container'
 import Button from './Button'
 import FooterLink from './FooterLink'
-import BackgroundDark from './BackgroundDark'
+import BackgroundDark from './BackgroundLight'
 
 export default function Footer() {
   return (
@@ -26,10 +26,10 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <hr className="mt-8 mb-10 border-0 bg-alex-8 bg-opacity-10 h-1" />
+            <hr className="mt-8 mb-10 border-0 bg-alex-1 bg-opacity-30 h-1" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 sm:gap-y-0">
               <div>
-                <h3 className="font-bold leading-tight tracking-tight text-alex-6 mb-5">
+                <h3 className="font-bold leading-tight tracking-tight text-alex-2 mb-5">
                   Alexander v.P.H. Dobbrunz
                 </h3>
                 <FooterLink>Philosophie</FooterLink>
@@ -38,7 +38,7 @@ export default function Footer() {
                 <FooterLink>Kontakt</FooterLink>
               </div>
               <div>
-                <h3 className="font-bold leading-tight tracking-tight text-alex-6 mb-5">
+                <h3 className="font-bold leading-tight tracking-tight text-alex-2 mb-5">
                   Kontakt
                 </h3>
                 <FooterLink>Telefon</FooterLink>

@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from './Container'
-import BackgroundLight from './BackgroundLight'
+import BackgroundLight from './BackgroundDark'
 
 export default function Projects({ title }) {
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import Container from './Container'
 import Button from './Button'
 import BackgroundLight from './BackgroundLight'
-import EnvironmentSvg from './EnvirontmentSvg'
+import EnvironmentSvg from './EnvirontmentSvgLight'
 
 export default function Hero() {
   return (

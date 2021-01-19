@@ -1,7 +1,7 @@
 import React from 'react'
 
 function BackgroundLight({ children }) {
-  return <div className="bg-alex-1 text-alex-8">{children}</div>
+  return <div className="bg-deepblue-7 text-alex-2">{children}</div>
 }
 
 export default BackgroundLight
