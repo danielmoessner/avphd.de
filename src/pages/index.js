@@ -3,25 +3,25 @@ import { graphql } from 'gatsby'
 import Seo from '../components/Seo'
 import Navigation from '../components/Navigation'
 import Hero from '../components/Hero'
-import Philosophy from '../components/Philosophy'
 import Projects from '../components/Projects'
 import Footer from '../components/Footer'
+import BackgroundHero from '../components/BackgroundHero'
 
 export default function Index(props) {
   let homePage = props.data.pagesYaml
 
   return (
-    <div>
+    <div style={{ scrollSnapType: 'y proximity' }}>
       <Seo
         title={homePage.meta.title}
         description={homePage.meta.description}
         image={homePage.meta.image.childImageSharp.fluid.src}
       />
       <Navigation />
+      <BackgroundHero />
       <Hero />
-      <Philosophy />
-      <Projects title="Wirtschaftliches Engagement" />
-      <Projects title="Soziales &amp; Gesellschaftliches" />
+      <Projects />
+
       <Footer />
     </div>
   )

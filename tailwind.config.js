@@ -9,6 +9,7 @@ module.exports = {
         amber: colors.amber,
         orange: colors.orange,
         yellow: colors.yellow,
+        gray: colors.warmGray,
         original: {
           1: '#f5eee6',
           2: '#ebe4dd',
@@ -27,6 +28,14 @@ module.exports = {
         },
         deepblue: {
           7: '#000566'
+        },
+        dark: {
+          2: '#feb89b',
+          5: '#3a1751',
+          6: '#211034',
+          7: '#180b25',
+          8: '#120a1f',
+          9: '#000000'
         }
       }
     }
@@ -37,5 +46,8 @@ module.exports = {
       fontSize: ['hover', 'focus']
     }
   },
-  plugins: [require('@tailwindcss/typography')]
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio')
+  ]
 }
