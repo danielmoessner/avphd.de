@@ -1,89 +1,70 @@
-import React from 'react'
-import Container from './Container'
-import BackgroundLight from './BackgroundDark'
-import Animate from './Animate'
-import Img from 'gatsby-image'
-import { useStaticQuery, graphql } from 'gatsby'
+import React, { useEffect, useRef, useState } from 'react'
+import Project from './Project'
 
 export default function Projects() {
-  const data = useStaticQuery(graphql`
-    query ProjectImage {
-      imageSharp(fluid: { originalName: { eq: "space.jpg" } }) {
-        fluid {
-          aspectRatio
-          base64
-          sizes
-          src
-          srcSet
-        }
-      }
-    }
-  `)
+  const projectTrack = useRef()
+  const projectProgress = useRef()
+
+  const [progress, setProgress] = useState(0)
+
+  const update = () => {
+    // progress track has h-screen class => it has the same height as the screen
+    const bcrTrack = projectTrack.current.getBoundingClientRect()
+    const screenHeight = bcrTrack.height
+
+    //
+    const bcrProgress = projectProgress.current.getBoundingClientRect()
+    const start = 0
+    const end = bcrProgress.height - screenHeight
+    const measurement = -bcrProgress.y
+
+    //
+    const progress = Math.max(Math.min(measurement / end, 1), 0)
+
+    setProgress(progress)
+  }
+
+  const getTranslate = () => {
+    const width = 200 - 100
+    return progress * width * -1
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', update)
+  }, [])
 
   return (
-    <section className="bg-gradient-to-b from-dark-8 to-dark-7 relative overflow-x-hidden">
-      <div
-        className="absolute bottom-0 left-0 w-0 h-0 border-transparent"
-        style={{ borderWidth: '100vw', borderBottomColor: '#180b25' }}
-      ></div>
-      <div className="h-screen w-full pt-96 pb-96 relative flex flex-col justify-items-center">
-        <div className="absolute right-0 h-full top-0 bottom-0 flex justify-center flex-col w-5/12">
-          <Img fluid={data.imageSharp.fluid} />
-        </div>
-        <Container>
-          <div className="w-6/12">
-            <Animate animateClass="animate__fadeInUp">
-              <div className="font-medium text-dark-2 text-lg uppercase tracking-wide mb-16">
-                Projekt
-              </div>
-            </Animate>
-            <Animate animateClass="animate__fadeInUp">
-              <h2 className="font-normal text-gray-300 text-5xl leading-tight mb-10 max-w-2xl">
-                Wir verbessern Ihren Alltag
-              </h2>
-            </Animate>
-            <Animate animateClass="animate__fadeInUp">
-              <p className="text-lg text-gray-300 max-w-3xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
-                optio saepe quibusdam exercitationem iste dolore vel impedit
-                quas sapiente nisi possimus, quidem corrupti nesciunt
-                voluptatum. Ipsam in cum vel. Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Dolor accusantium molestias totam
-                beatae, assumenda aliquid porro quibusdam sit quidem
-                consequuntur saepe dolores, natus magni, nostrum perferendis
-                vitae explicabo amet fugit.
-              </p>
-            </Animate>
-          </div>
-        </Container>
+    <section className="bg-gradient-to-b from-dark-8 to-dark-7 relative">
+      <div className="absolute top-0 left-0 right-0 bottom-0 overflow-x-hidden max-w-full max-h-full">
+        <div className="text-3xl text-white">{progress}</div>
+        <div
+          className="absolute bottom-0 left-0 w-0 h-0 border-transparent"
+          style={{ borderWidth: '100vw', borderBottomColor: '#3a1751' }}
+        ></div>
       </div>
-      <div className="h-screen w-full pt-96 pb-96">
-        <Container>
-          <div className="max-w-2xl">
-            <Animate animateClass="animate__fadeInUp">
-              <div className="font-medium text-dark-2 text-lg uppercase tracking-wide mb-16">
-                Projekt
-              </div>
-            </Animate>
-            <Animate animateClass="animate__fadeInUp">
-              <h2 className="font-normal text-gray-300 text-5xl leading-tight mb-10 max-w-2xl">
-                Wir verbessern Ihren Alltag
-              </h2>
-            </Animate>
-            <Animate animateClass="animate__fadeInUp">
-              <p className="text-lg text-gray-300 max-w-3xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
-                optio saepe quibusdam exercitationem iste dolore vel impedit
-                quas sapiente nisi possimus, quidem corrupti nesciunt
-                voluptatum. Ipsam in cum vel. Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Dolor accusantium molestias totam
-                beatae, assumenda aliquid porro quibusdam sit quidem
-                consequuntur saepe dolores, natus magni, nostrum perferendis
-                vitae explicabo amet fugit.
-              </p>
-            </Animate>
+
+      <div
+        ref={projectProgress}
+        id="project-progress"
+        className="relative w-full"
+        style={{ height: '3000px' }}
+      >
+        <div className="absolute top-0 bottom-0 left-0 right-0 z-10">
+          <div className="sticky top-0 overflow-hidden w-full h-screen">
+            <div
+              ref={projectTrack}
+              id="project-track"
+              className="flex flex-row flex-nowrap h-screen align-items-center"
+              style={{
+                width: '200vw',
+                transform: `translateX(${getTranslate()}vw)`
+              }}
+            >
+              <Project />
+              <Project />
+            </div>
           </div>
-        </Container>
+        </div>
       </div>
     </section>
   )

@@ -2,7 +2,6 @@ import React from 'react'
 import Container from './Container'
 import Button from './Button'
 import FooterLink from './FooterLink'
-import BackgroundDark from './BackgroundLight'
 
 export default function Footer() {
   return (
