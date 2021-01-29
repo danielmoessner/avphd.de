@@ -70,7 +70,7 @@ collections:
     editor:
       preview: true
     folder: content/projects
-    # slug: '{{fields.slug}}'
+    slug: '{{fields.name}}'
     create: true
     extension: yml
     # preview_path: wildtiere/{{fields.slug}}

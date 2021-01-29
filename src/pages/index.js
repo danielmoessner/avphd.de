@@ -7,8 +7,9 @@ import Projects from '../components/Projects'
 import Footer from '../components/Footer'
 import BackgroundHero from '../components/BackgroundHero'
 
-export default function Index(props) {
-  let homePage = props.data.pagesYaml
+export default function Index({ data }) {
+  const homePage = data.pagesYaml
+  const projects = data.allProjectsYaml.nodes
 
   return (
     <div style={{ scrollSnapType: 'y proximity' }}>
@@ -20,7 +21,7 @@ export default function Index(props) {
       <Navigation />
       <BackgroundHero />
       <Hero />
-      <Projects />
+      <Projects projects={projects} />
 
       <Footer />
     </div>
@@ -44,6 +45,24 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    allProjectsYaml {
+      nodes {
+        image {
+          childImageSharp {
+            fluid {
+              aspectRatio
+              base64
+              sizes
+              src
+              srcSet
+            }
+          }
+        }
+        id
+        name
+        description
       }
     }
   }
