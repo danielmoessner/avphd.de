@@ -3,11 +3,11 @@ import Container from './Container'
 import Animate from './Animate'
 import Img from 'gatsby-image'
 
-function Project({ title, image, description }) {
+function Project({ title, image, description, preview }) {
   return (
     <div className="h-screen w-screen pt-96 pb-96 relative flex flex-col justify-items-center">
       <div className="absolute right-0 h-full top-0 bottom-0 flex justify-center flex-col w-5/12">
-        <Img fluid={image.childImageSharp.fluid} />
+        {!preview ? <Img fluid={image.childImageSharp.fluid} /> : image}
       </div>
       <Container>
         <div className="w-6/12">
@@ -28,6 +28,10 @@ function Project({ title, image, description }) {
       </Container>
     </div>
   )
+}
+
+Project.defaultProps = {
+  preview: false
 }
 
 export default Project

@@ -11,10 +11,10 @@ local_backend: true
 locale: de
 
 # See https://www.netlifycms.org/docs/configuration-options/#display-url
-display_url: avphd.de
+display_url: dobbrunz.netlify.app
 
 # See https://www.netlifycms.org/docs/configuration-options/#site-url
-site_url: avphd.de
+site_url: dobbrunz.netlify.de
 
 # See https://www.netlifycms.org/docs/configuration-options/#media-folder
 media_folder: /content/media

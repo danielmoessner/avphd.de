@@ -4,15 +4,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: 'Wildtiere',
-    //     short_name: 'Wildtiere',
-    //     start_url: '/',
-    //     icon: 'content/media/favicon.svg',
-    //   },
-    // },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
