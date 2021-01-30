@@ -2,10 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Seo from '../components/Seo'
 import Navigation from '../components/Navigation'
-import Hero from '../components/Hero'
+import Intro from '../components/Intro'
 import Projects from '../components/Projects'
 import Footer from '../components/Footer'
-import BackgroundHero from '../components/BackgroundHero'
+import Hero from '../components/Hero'
 
 export default function Index({ data }) {
   const homePage = data.pagesYaml
@@ -19,8 +19,8 @@ export default function Index({ data }) {
         image={homePage.meta.image.childImageSharp.fluid.src}
       />
       <Navigation />
-      <BackgroundHero />
       <Hero />
+      <Intro />
       <Projects projects={projects} />
 
       <Footer />

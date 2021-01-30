@@ -1,42 +1,58 @@
-import React from 'react'
-import Container from './Container'
-import BackgroundBlack from './BackgroundBlack'
-import Animate from './Animate'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
+import Img from 'gatsby-image'
+import { useStaticQuery, graphql } from 'gatsby'
+import gsap from 'gsap'
 
-export default function Hero() {
+function Hero() {
+  const data = useStaticQuery(graphql`
+    query Image {
+      imageSharp(fluid: { originalName: { eq: "space.jpg" } }) {
+        fluid(sizes: "100vw") {
+          aspectRatio
+          base64
+          sizes
+          src
+          srcSet
+        }
+      }
+    }
+  `)
+  const background = useRef()
+  const [translateX, setTranslateX] = useState(0)
+  const [translateY, setTranslateY] = useState(0)
+
+  useEffect(() => {
+    gsap.to('#background', { x: translateX, y: translateY, duration: 1 })
+  })
+
+  // eslint-disable-next-line
+  const onMouseMove = useCallback((e) => {
+    let xPos = e.nativeEvent.offsetX / background.current.offsetWidth
+    xPos = Math.min(xPos, 1)
+    let xPosCentered = (xPos - 0.5) * -2
+    let xShift = 20 * xPosCentered
+    setTranslateX(xShift)
+    let yPos = e.nativeEvent.offsetY / background.current.offsetHeight
+    yPos = Math.min(yPos, 1)
+    let yPosCentered = (yPos - 0.5) * -2
+    let yShift = 20 * yPosCentered
+    setTranslateY(yShift)
+  })
+
   return (
-    <section className="w-full">
-      <BackgroundBlack>
-        <Container>
-          <div className="pt-24 pb-64">
-            <Animate animateClass="animate__fadeInUp">
-              <div className="font-medium text-dark-2 text-lg uppercase tracking-wide">
-                Philosophie
-              </div>
-            </Animate>
-            <Animate animateClass="animate__fadeInUp">
-              <div className="mt-12 mb-12 border-l border-gray-300 h-20"></div>
-            </Animate>
-            <Animate animateClass="animate__fadeInUp">
-              <h2 className="font-normal text-gray-300 text-6xl leading-tight mb-10 max-w-2xl">
-                Wir engagieren uns wirtschaftlich und sozial
-              </h2>
-            </Animate>
-            <Animate animateClass="animate__fadeInUp">
-              <p className="text-lg text-gray-300 max-w-3xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
-                optio saepe quibusdam exercitationem iste dolore vel impedit
-                quas sapiente nisi possimus, quidem corrupti nesciunt
-                voluptatum. Ipsam in cum vel. Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Dolor accusantium molestias totam
-                beatae, assumenda aliquid porro quibusdam sit quidem
-                consequuntur saepe dolores, natus magni, nostrum perferendis
-                vitae explicabo amet fugit.
-              </p>
-            </Animate>
-          </div>
-        </Container>
-      </BackgroundBlack>
-    </section>
+    // eslint-disable-next-line
+    <header
+      onMouseMove={onMouseMove}
+      className="overflow-hidden"
+      ref={background}
+    >
+      <div className={'-m-5 '} id="background">
+        <div className="aspect-w-16 aspect-h-10">
+          <Img fluid={data.imageSharp.fluid} style={{ position: 'absolute' }} />
+        </div>
+      </div>
+    </header>
   )
 }
+
+export default Hero

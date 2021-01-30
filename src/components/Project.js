@@ -5,7 +5,12 @@ import Img from 'gatsby-image'
 
 function Project({ title, image, description, preview }) {
   return (
-    <div className="h-screen w-screen pt-96 pb-96 relative flex flex-col justify-items-center">
+    <div
+      className={
+        'relative flex flex-col justify-items-center ' +
+        (!preview ? 'h-screen w-screen pt-96 pb-96 ' : '')
+      }
+    >
       <div className="absolute right-0 h-full top-0 bottom-0 flex justify-center flex-col w-5/12">
         {!preview ? <Img fluid={image.childImageSharp.fluid} /> : image}
       </div>
