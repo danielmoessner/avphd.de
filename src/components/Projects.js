@@ -9,6 +9,8 @@ export default function Projects({ projects }) {
   const projectProgress = useRef()
 
   const [progress, setProgress] = useState(0)
+  const [trackWidth, setTrackWidth] = useState('auto')
+  const [trackHeight, setTrackHeight] = useState('auto')
 
   const update = () => {
     // progress track has h-screen class => it has the same height as the screen
@@ -26,28 +28,30 @@ export default function Projects({ projects }) {
     setProgress(progress)
   }
 
-  const getTrackWidth = () => {
-    if (window.innerWidth >= 1024) return projects.length * 100
-    return 'auto'
-  }
+  useEffect(() => {
+    if (window.innerWidth >= 1024) setTrackWidth(`${projects.length * 100}vw`)
+    else setTrackWidth('auto')
+  }, [projects.length])
+
+  useEffect(() => {
+    if (window.innerWidth >= 1024) setTrackHeight(`${projects.length * 1000}px`)
+    else setTrackHeight('auto')
+  }, [projects.length])
 
   const getTranslate = () => {
-    const width = getTrackWidth() - 90
+    const width = projects.length * 100 - 90
     return progress * width * -1
   }
 
   useEffect(() => {
     if (window.innerWidth >= 1024) {
       window.addEventListener('scroll', update)
-    }
-  }, [])
-  useEffect(
-    () => () => {
-      if (window.innerWidth >= 1024)
+      return () => {
         window.removeEventListener('scroll', update)
-    },
-    []
-  )
+      }
+    }
+    return () => {}
+  }, [])
 
   /*
    ** Render
@@ -67,7 +71,7 @@ export default function Projects({ projects }) {
         ref={projectProgress}
         id="project-progress"
         className="relative w-full"
-        style={{ height: `${getTrackWidth()}0px` }}
+        style={{ height: trackHeight }}
       >
         <div className="lg:absolute top-0 bottom-0 left-0 right-0 z-10">
           <div className="lg:sticky top-0 overflow-hidden w-full lg:h-screen">
@@ -76,7 +80,7 @@ export default function Projects({ projects }) {
               id="project-track"
               className="flex flex-col lg:flex-row flex-nowrap lg:h-screen align-items-center"
               style={{
-                width: `${getTrackWidth()}vw`,
+                width: trackWidth,
                 transform: `translateX(${getTranslate()}vw)`
               }}
             >
