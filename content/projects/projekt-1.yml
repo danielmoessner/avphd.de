@@ -1,5 +1,7 @@
 collection: project
-name: Projekt
+name: Projekt first
+order: 0
+category: Soziales
 image: ../media/boot.jpg
 description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
   nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed

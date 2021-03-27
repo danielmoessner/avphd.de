@@ -1,22 +1,8 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import Img from 'gatsby-image'
-import { useStaticQuery, graphql } from 'gatsby'
 import gsap from 'gsap'
 
-function Hero() {
-  const data = useStaticQuery(graphql`
-    query Image {
-      imageSharp(fluid: { originalName: { eq: "space.jpg" } }) {
-        fluid(sizes: "100vw") {
-          aspectRatio
-          base64
-          sizes
-          src
-          srcSet
-        }
-      }
-    }
-  `)
+function Hero({ section }) {
   const background = useRef()
   const [translateX, setTranslateX] = useState(0)
   const [translateY, setTranslateY] = useState(0)
@@ -48,7 +34,10 @@ function Hero() {
     >
       <div className={'-m-5 '} id="background">
         <div className="aspect-w-16 aspect-h-10">
-          <Img fluid={data.imageSharp.fluid} style={{ position: 'absolute' }} />
+          <Img
+            fluid={section.image.childImageSharp.fluid}
+            style={{ position: 'absolute' }}
+          />
         </div>
       </div>
     </header>

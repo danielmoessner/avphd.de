@@ -27,7 +27,8 @@ export default function Projects({ projects }) {
   }
 
   const getTrackWidth = () => {
-    return projects.length * 100
+    if (document.body.clientWidth >= 1024) return projects.length * 100
+    return 'auto'
   }
 
   const getTranslate = () => {
@@ -36,18 +37,30 @@ export default function Projects({ projects }) {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', update)
+    if (document.body.clientWidth >= 1024) {
+      window.addEventListener('scroll', update)
+    }
   }, [])
+  useEffect(
+    () => () => {
+      if (document.body.clientWidth >= 1024)
+        window.removeEventListener('scroll', update)
+    },
+    []
+  )
 
   /*
    ** Render
    */
   return (
-    <section className="bg-gradient-to-b from-dark-8 to-dark-7 relative">
+    <section
+      id="projekte"
+      className="bg-gradient-to-b from-dark-8 to-dark-7 relative"
+    >
       <div className="absolute top-0 left-0 right-0 bottom-0 overflow-x-hidden max-w-full max-h-full">
         <div
           className="absolute bottom-0 right-0 w-0 h-0 border-transparent"
-          style={{ borderWidth: '110vh', borderRightColor: 'rgb(155 67 81)' }}
+          style={{ borderWidth: '110vh', borderRightColor: 'rgb(2 39 94)' }}
         ></div>
       </div>
       <div
@@ -56,12 +69,12 @@ export default function Projects({ projects }) {
         className="relative w-full"
         style={{ height: `${getTrackWidth()}0px` }}
       >
-        <div className="absolute top-0 bottom-0 left-0 right-0 z-10">
-          <div className="sticky top-0 overflow-hidden w-full h-screen">
+        <div className="lg:absolute top-0 bottom-0 left-0 right-0 z-10">
+          <div className="lg:sticky top-0 overflow-hidden w-full lg:h-screen">
             <div
               ref={projectTrack}
               id="project-track"
-              className="flex flex-row flex-nowrap h-screen align-items-center"
+              className="flex flex-col lg:flex-row flex-nowrap lg:h-screen align-items-center"
               style={{
                 width: `${getTrackWidth()}vw`,
                 transform: `translateX(${getTranslate()}vw)`
@@ -71,6 +84,7 @@ export default function Projects({ projects }) {
                 <Project
                   title={project.name}
                   image={project.image}
+                  category={project.category}
                   description={project.description}
                   key={project.id}
                 />

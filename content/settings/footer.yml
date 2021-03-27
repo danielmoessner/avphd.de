@@ -1,0 +1,10 @@
+collection: setting
+slug: footer
+top:
+  buttonLink: mailto:kontakt@avphd.org
+  buttonText: Konakt aufnehmen
+  title: Wollen Sie mehr erfahren?
+  text: Wir helfen Ihnen gerne weiter und erzählen Ihnen mehr von unseren Projekten.
+bottom:
+  columnOneTitle: Alexander v.P.H. Dobbrunz
+  columnTwoTitle: Kontakt

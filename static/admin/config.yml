@@ -47,22 +47,18 @@ collections:
                 name: description
                 widget: text
               - { label: Bild, name: image, widget: image }
-
-  - name: company
-    label: Unternehmen
-    label_singular: Unternehmen
-    editor:
-      preview: true
-    folder: content/companies
-    slug: '{{fields.name}}'
-    create: true
-    extension: yml
-    # preview_path: wildtiere/{{fields.slug}}
-    fields:
-      - { label: Sammlung, name: collection, widget: hidden, default: company }
-      - { label: Name, name: name, widget: string }
-      - { label: Bild, name: image, widget: image }
-      - { label: Beschreibung, name: description, widget: text }
+          - label: Header
+            name: header
+            widget: object
+            fields:
+              - { label: Hintergrundbild, name: image, widget: image }
+          - label: Intro
+            name: intro
+            widget: object
+            fields:
+              - { label: Vortitel, name: pretitle, widget: string }
+              - { label: Titel, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
 
   - name: project
     label: Projekte
@@ -73,10 +69,11 @@ collections:
     slug: '{{fields.name}}'
     create: true
     extension: yml
-    # preview_path: wildtiere/{{fields.slug}}
     fields:
       - { label: Sammlung, name: collection, widget: hidden, default: project }
       - { label: Name, name: name, widget: string }
+      - { label: Stortierung, name: order, widget: number }
+      - { label: Kategorie, name: category, widget: string }
       - { label: Bild, name: image, widget: image }
       - { label: Beschreibung, name: description, widget: text }
 
@@ -89,15 +86,13 @@ collections:
     files:
       - file: 'content/settings/global.yml'
         label: Global
-        name: 'global-settings'
+        name: 'global'
         preview: false
         fields:
-          - {
-              label: Sammlung,
-              name: collection,
-              widget: hidden,
-              default: setting
-            }
+          - label: Sammlung
+            name: collection
+            widget: hidden
+            default: setting
           - { label: Slug, name: slug, widget: hidden, default: global }
           - {
               label: URL der Seite,
@@ -106,3 +101,44 @@ collections:
               required: false
             }
           - { label: Favicon, name: favicon, widget: image }
+          - { label: Telefon, name: phone, widget: string }
+          - { label: E-Mail, name: email, widget: string }
+          - { label: Adresse, name: address, widget: text }
+      - file: content/settings/navigation.yml
+        label: Navigation
+        name: navigation
+        preview: false
+        fields:
+          - label: Sammlung
+            name: collection
+            widget: hidden
+            default: setting
+          - { label: Slug, name: slug, widget: hidden, default: navigation }
+          - { label: Logo, name: logo, widget: image }
+      - file: content/settings/footer.yml
+        label: Footer
+        name: footer
+        preview: false
+        fields:
+          - label: Sammlung
+            name: collection
+            widget: hidden
+            default: setting
+          - { label: Slug, name: slug, widget: hidden, default: footer }
+          - label: Top
+            name: top
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: string }
+              - { label: Button Text, name: buttonText, widget: string }
+              - label: Button Link
+                name: buttonLink
+                widget: string
+                hint: mailto:kontakt@avphd.org
+          - label: Bottom
+            name: bottom
+            widget: object
+            fields:
+              - { label: Spalte 1 Titel, name: columnOneTitle, widget: string }
+              - { label: Spalte 2 Titel, name: columnTwoTitle, widget: string }

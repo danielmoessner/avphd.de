@@ -15,6 +15,7 @@ const ProjectPreview = ({ entry, widgetFor }) => (
         preview
         image={widgetFor('image')}
         title={entry.getIn(['data', 'name'])}
+        category={entry.getIn(['data', 'category'])}
         description={entry.getIn(['data', 'description'])}
       />
     </div>

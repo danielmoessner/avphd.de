@@ -19,10 +19,9 @@ export default function Index({ data }) {
         image={homePage.meta.image.childImageSharp.fluid.src}
       />
       <Navigation />
-      <Hero />
-      <Intro />
+      <Hero section={homePage.header} />
+      <Intro section={homePage.intro} />
       <Projects projects={projects} />
-
       <Footer />
     </div>
   )
@@ -46,8 +45,26 @@ export const query = graphql`
           }
         }
       }
+      header {
+        image {
+          childImageSharp {
+            fluid(maxWidth: 2400) {
+              src
+              srcSet
+              sizes
+              base64
+              aspectRatio
+            }
+          }
+        }
+      }
+      intro {
+        pretitle
+        title
+        text
+      }
     }
-    allProjectsYaml {
+    allProjectsYaml(sort: { fields: order }) {
       nodes {
         image {
           childImageSharp {
@@ -62,6 +79,7 @@ export const query = graphql`
         }
         id
         name
+        category
         description
       }
     }

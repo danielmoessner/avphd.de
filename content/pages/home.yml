@@ -3,3 +3,16 @@ meta:
   title: Alexander v.P.H. Dobbrunz
   description: test
   image: ../media/boot.jpg
+header:
+  image: ../media/hintergrund.jpeg
+intro:
+  pretitle: Philosophie
+  title: Wir engagieren uns wirtschaftlich und sozial
+  text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, optio
+    saepe quibusdam exercitationem iste dolore vel impedit quas sapiente nisi
+    possimus, quidem corrupti nesciunt voluptatum. Ipsam in cum vel. Lorem ipsum
+    dolor, sit amet consectetur adipisicing elit. Dolor accusantium molestias
+    totam beatae, assumenda aliquid porro quibusdam sit quidem consequuntur
+    saepe dolores, natus magni, nostrum perferendis vitae explicabo amet fugit.
+projects:
+  title: Projekte
