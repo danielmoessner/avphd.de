@@ -27,7 +27,7 @@ export default function Projects({ projects }) {
   }
 
   const getTrackWidth = () => {
-    if (document.body.clientWidth >= 1024) return projects.length * 100
+    if (window.innerWidth >= 1024) return projects.length * 100
     return 'auto'
   }
 
@@ -37,13 +37,13 @@ export default function Projects({ projects }) {
   }
 
   useEffect(() => {
-    if (document.body.clientWidth >= 1024) {
+    if (window.innerWidth >= 1024) {
       window.addEventListener('scroll', update)
     }
   }, [])
   useEffect(
     () => () => {
-      if (document.body.clientWidth >= 1024)
+      if (window.innerWidth >= 1024)
         window.removeEventListener('scroll', update)
     },
     []
