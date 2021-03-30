@@ -12,7 +12,7 @@ export default function Index({ data }) {
   const projects = data.allProjectsYaml.nodes
 
   return (
-    <div style={{ scrollSnapType: 'y proximity' }}>
+    <div>
       <Seo
         title={homePage.meta.title}
         description={homePage.meta.description}

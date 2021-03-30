@@ -59,6 +59,25 @@ collections:
               - { label: Vortitel, name: pretitle, widget: string }
               - { label: Titel, name: title, widget: string }
               - { label: Text, name: text, widget: text }
+      - file: content/pages/imprint.md
+        label: Impressum
+        name: imprint
+        fields:
+          - { label: Sammlung, name: collection, widget: hidden, default: page }
+          - { label: Slug, name: slug, widget: hidden, default: imprint }
+          - { label: Inhalt, name: body, widget: markdown }
+      - file: content/pages/dataProtection.md
+        label: Datenschutz
+        name: dataProtection
+        fields:
+          - { label: Sammlung, name: collection, widget: hidden, default: page }
+          - {
+              label: Slug,
+              name: slug,
+              widget: hidden,
+              default: data-protection
+            }
+          - { label: Inhalt, name: body, widget: markdown }
 
   - name: project
     label: Projekte

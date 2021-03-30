@@ -72,7 +72,7 @@ export default function Navigation() {
               </svg>
             </button>
           </div>
-          <div className="flex-1 flex items-center justify-center lg:items-stretch lg:justify-between">
+          <div className="flex-1 flex items-center lg:items-stretch lg:justify-between">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/">
                 <h1 className="border-dark-2 border-2 border-t-0 rounded-lg overflow-hidden rounded-t-none">
@@ -87,14 +87,14 @@ export default function Navigation() {
             <div className="hidden lg:block">
               <div className="flex space-x-4 justify-center mt-4">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                <NavigationLink to="#philosophie">Philosophie</NavigationLink>
-                <NavigationLink to="#projekte">
+                <NavigationLink to="/#philosophie">Philosophie</NavigationLink>
+                <NavigationLink to="/#projekte">
                   Wirtschaftliches Engagement
                 </NavigationLink>
-                <NavigationLink to="#projekte">
+                <NavigationLink to="/#projekte">
                   Soziales &amp; Gesellschaftliches
                 </NavigationLink>
-                <NavigationLink to="#kontakt">Kontakt</NavigationLink>
+                <NavigationLink to="/#kontakt">Kontakt</NavigationLink>
               </div>
             </div>
             <div className="hidden lg:w-2/12"></div>
@@ -108,20 +108,24 @@ export default function Navigation() {
       >
         <div className="px-2 pt-2 pb-3 space-y-1 bg-dark-8 bg-opacity-90">
           <div className="block">
-            <NavigationLink onClick={close}>Philosophie</NavigationLink>
+            <NavigationLink to="/#philosophie" onClick={close}>
+              Philosophie
+            </NavigationLink>
           </div>
           <div className="block">
-            <NavigationLink onClick={close}>
+            <NavigationLink to="/#projekte" onClick={close}>
               Wirtschaftliches Engagement
             </NavigationLink>
           </div>
           <div className="block">
-            <NavigationLink onClick={close}>
+            <NavigationLink to="/#projekte" onClick={close}>
               Soziales &amp; Gesellschaftliches
             </NavigationLink>
           </div>
           <div className="block">
-            <NavigationLink onClick={close}>Kontakt</NavigationLink>
+            <NavigationLink to="/#kontakt" onClick={close}>
+              Kontakt
+            </NavigationLink>
           </div>
         </div>
       </div>

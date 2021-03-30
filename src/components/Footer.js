@@ -2,6 +2,7 @@ import React from 'react'
 import Container from './Container'
 import Button from './Button'
 import FooterLink from './FooterLink'
+import FooterLinkA from './FooterLinkA'
 import { useStaticQuery, graphql } from 'gatsby'
 import sanitizeHtml from 'sanitize-html'
 
@@ -58,23 +59,25 @@ export default function Footer() {
               <h3 className="font-bold leading-tight tracking-tight text-alex-2 mb-5">
                 {footer.bottom.columnOneTitle}
               </h3>
-              <FooterLink to="#philosophie">Philosophie</FooterLink>
-              <FooterLink to="#projekte">
+              <FooterLink to="/#philosophie">Philosophie</FooterLink>
+              <FooterLink to="/#projekte">
                 Wirtschaftliches Engagement
               </FooterLink>
-              <FooterLink to="#projekte">
+              <FooterLink to="/#projekte">
                 Soziales &amp; Gesellschaftliches
               </FooterLink>
-              <FooterLink to="#kontakt">Kontakt</FooterLink>
+              <FooterLink to="/#kontakt">Kontakt</FooterLink>
             </div>
             <div>
               <h3 className="font-bold leading-tight tracking-tight text-alex-2 mb-5">
                 {footer.bottom.columnTwoTitle}
               </h3>
-              <FooterLink to={`tel:${global.phone}`}>{global.phone}</FooterLink>
-              <FooterLink to={`mailto:${global.email}`}>
+              <FooterLinkA href={`tel:${global.phone}`}>
+                {global.phone}
+              </FooterLinkA>
+              <FooterLinkA href={`mailto:${global.email}`}>
                 {global.email}
-              </FooterLink>
+              </FooterLinkA>
               <address
                 className="text-alex-2 block pl-1 py-2 rounded-md not-italic text-opacity-80 mb-1"
                 dangerouslySetInnerHTML={{ __html: makeText(global.address) }}
