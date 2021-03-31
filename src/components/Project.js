@@ -23,7 +23,7 @@ function Project({ title, category, image, description, preview }) {
           </Animate>
           <Animate animateClass="animate__fadeInUp">
             <div className="mb-6 lg:hidden">
-              <Img fluid={image.childImageSharp.fluid} />
+              {!preview ? <Img fluid={image.childImageSharp.fluid} /> : image}
             </div>
           </Animate>
           <Animate animateClass="animate__fadeInUp">
