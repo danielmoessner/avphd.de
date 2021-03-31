@@ -3,12 +3,14 @@ import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import { graphql } from 'gatsby'
 import Container from '../components/Container'
+import Seo from '../components/Seo'
 
 function Page({ data }) {
   const page = data.markdownRemark.html
 
   return (
     <div>
+      <Seo title="Datenschutz" description="" />
       <Navigation />
       <section className="pt-64 pb-32 bg-gradient-to-b from-dark-8 to-dark-7">
         <Container>
