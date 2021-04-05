@@ -10,7 +10,7 @@ AVPHD Holding GmbH\
 Nördliche Münchner Straße 27 A\
 82031 Grünwald\
 Vertreten durch:\
-Alexander v.P.H. Dobbrunz
+Alexander Graf von Platen-Hallermund-Dobbrunz
 
 ## Kontakt
 
